@@ -1,7 +1,39 @@
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 body {
     font-family: Arial;
     background: #5b8f66;
     padding: 20px;
+}
+nav {
+  background: #5e9b5e;
+  padding: 12px 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: left;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
 }
 
 h1 {
@@ -50,4 +82,27 @@ table td:nth-child(4), table th:nth-child(4),
 table td:nth-child(6), table th:nth-child(6),
 table td:nth-child(7), table th:nth-child(7) {
     text-align: left;
+}
+
+/* ===== ADS BOX ===== */
+.ad-box {
+  text-align: center;
+  min-height: 90px;
+  padding: 10px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .card {
+    padding: 12px;
+  }
+
+  input[type="number"],
+  select {
+    width: 65px;
+  }
+
+  table {
+    font-size: 12px;
+  }
 }
