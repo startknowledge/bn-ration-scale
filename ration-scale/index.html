@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ration Scale Calculator (Fixed Working)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>RATION SCALE CALCULATOR</h1>
+
+<div class="card">
+<b>Category</b><br>
+<label><input type="checkbox" id="offrs"> OFFRS</label>
+<label><input type="checkbox" id="jco"> JCO/ORs</label>
+<label><input type="checkbox" id="dog"> Army Dog</label>
+</div>
+
+<div class="card">
+<b>Ration Type</b>
+<select id="ration">
+<option value="fresh">Fresh Ration</option>
+<option value="dry">Dry Ration</option>
+</select>
+&nbsp;&nbsp;
+<b>Days</b>
+<input type="number" id="days" value="1" min="1">
+</div>
+
+<div class="card" id="strengthBox">
+<b>Strength</b><br>
+OFFRS <input type="number" id="sOff" value="0">
+JCO <input type="number" id="sJco" value="0">
+ORs <input type="number" id="sOr" value="0">
+Dog <input type="number" id="sDog" value="0">
+<b>Total:</b> <span id="sTotal">0</span>
+</div>
+
+<div class="card">
+<button id="loadBtn">Load Table</button>
+<button id="calcBtn">Calculate</button>
+</div>
+
+<div class="card" id="tableArea"></div>
+<div class="card" id="vehicleArea"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
