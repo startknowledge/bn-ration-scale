@@ -80,7 +80,7 @@ let currentRows=[];
 
 /************ STRENGTH LOGIC ************/
 function resetStrength(){
- sOff.value=0; sJco.value=0; sOr.value=0; sDog.value=0; sTotal.innerText=0;
+ sOff.value=0; sJco.value=0; sOr.value=0; sDog.value=0; sTotal.innerText=0; sTP.innerText=0;
 }
 
 function updateStrengthUI(){
@@ -98,15 +98,18 @@ function updateStrengthUI(){
 }
 
 ['offrs','jco','dog'].forEach(id=>$(id).onchange=updateStrengthUI);
-['sOff','sJco','sOr','sDog'].forEach(id=>$(id).oninput=()=>{
+['sOff','sJco','sOr','sDog','days'].forEach(id=>$(id).oninput=()=>{
  sTotal.innerText=(+sOff.value||0)+(+sJco.value||0)+(+sOr.value||0)+(+sDog.value||0);
+ sTP.innerText=((+sOff.value||0)+(+sJco.value||0)+(+sOr.value||0)+(+sDog.value||0))*(+days.value||1);
 });
 
 /************ LOAD TABLE ************/
 loadBtn.onclick = () => {
+  // ✅ Table Div ko show  
+  tableArea.style.display = 'block';
  const type = ration.value;
  currentRows = JSON.parse(JSON.stringify(DATA[type]));
- let html = '<table><tr><th>Item</th><th>Unit</th>';
+ let html = '<table><tr><th>Select</th><th>Item</th><th>Unit</th>';
  if(offrs.checked) html += '<th>Offrs Scale</th><th>Offrs Total</th>';
  if(jco.checked) html += '<th>JCO/ORs Scale</th><th>JCO/ORs Total</th>';
  if(dog.checked) html += '<th>Army Dog Scale</th><th>Total</th>';
@@ -115,38 +118,47 @@ loadBtn.onclick = () => {
 
  currentRows.forEach(r => {
   html += '<tr>';
-  html += `<td>${r.item}</td><td>${r.unit}</td>`;
+  /*-check box add kiya-*/
+  html += `<td><input type="checkbox" class="rowCheck" checked></td> 
+  <td>${r.item}</td>
+  <td>${r.unit}</td>`;
   if(offrs.checked) html += `<td><input class="offScale" type="text" value="${r.off.toFixed(3)}"></td><td>-</td>`;
   if(jco.checked) html += `<td><input class="jcoScale" type="text" value="${r.jco.toFixed(3)}"></td><td>-</td>`;
   if(dog.checked) html += `<td><input class="dogScale" type="text" value="${r.dog.toFixed(3)}"></td><td>-</td>`;
   if(offrs.checked && jco.checked) html += '<td>-</td>';
   html += '</tr>';
  });
+ html += `</table>`;
  tableArea.innerHTML = html;
  vehicleArea.innerHTML = '';
 };
 
 /************ CALCULATE ************/
 calcBtn.onclick = () => {
+  // ✅ Table Div ko show 
+  vehicleArea.style.display = 'block';
  const daysVal = +days.value || 1;
  let table = document.querySelector('#tableArea table');
  if(!table){ alert('Load table first'); return; }
+
  let rows = table.querySelectorAll('tr');
  let vehicleTotalKg = 0;
 
  rows.forEach((tr,i)=>{
   if(i===0) return;
   let tds = tr.querySelectorAll('td');
-  let item = tds[0].innerText;
-  let unit = tds[1].innerText;
-  let col = 2;
+  if(!tds[0].querySelector("input").checked) return;
+
+  let item = tds[1].innerText;
+  let unit = tds[2].innerText;
+  let col = 3;
   let offVal=0, jVal=0, dogVal=0;
 
   if(offrs.checked){
    let scale = parseFloat(tds[col].querySelector('input').value)||0;
    offVal = scale*(+sOff.value||0)*daysVal;
    if(unit==='gms') offVal *= 1000;
-   tds[col+1].innerHTML = item==='Egg Fresh'?eggTray(offVal):format(offVal,unit);
+   tds[col+1].innerHTML = item==='Egg Fresh'?eggTray(offVal):smartFormat(offVal,unit);
    vehicleTotalKg += unit==='gms'?offVal:0;
    col+=2;
   }
@@ -155,7 +167,7 @@ calcBtn.onclick = () => {
    let scale = parseFloat(tds[col].querySelector('input').value)||0;
    jVal = scale*((+sJco.value||0)+(+sOr.value||0))*daysVal;
    if(unit==='gms') jVal *= 1000;
-   tds[col+1].innerHTML = item==='Egg Fresh'?eggTray(jVal):format(jVal,unit);
+   tds[col+1].innerHTML = item==='Egg Fresh'?eggTray(jVal):smartFormat(jVal,unit);
    vehicleTotalKg += unit==='gms'?jVal:0;
    col+=2;
   }
@@ -164,24 +176,67 @@ calcBtn.onclick = () => {
    let scale = parseFloat(tds[col].querySelector('input').value)||0;
    dogVal = scale*(+sDog.value||0)*daysVal;
    if(unit==='gms') dogVal *= 1000;
-   tds[col+1].innerHTML = item==='Egg Fresh'?eggTray(dogVal):format(dogVal,unit);
+   tds[col+1].innerHTML = item==='Egg Fresh'?eggTray(dogVal):smartFormat(dogVal,unit);
    vehicleTotalKg += unit==='gms'?dogVal:0;
    col+=2;
   }
 
+  // ✅ ONLY FINAL TOTAL COUNTS FOR VEHICLE
   if(offrs.checked && jco.checked){
    let g = offVal + jVal;
-   tds[col].innerHTML = item==='Egg Fresh'?eggTray(g):format(g,unit);
-   vehicleTotalKg += unit==='gms'?g:0;
+   tds[col].innerHTML = item==='Egg Fresh'?eggTray(g):smartFormat(g,unit);
+   vehicleTotalKg += unit==='gms' ? g : 0;
   }
  });
 
- let vehicle = 'ALS (20 Ton)';
- if(vehicleTotalKg <= 5000) vehicle = '2.5 Ton Vehicle';
- else if(vehicleTotalKg <= 9000) vehicle = '9 Ton Bolero Camper';
-
- vehicleArea.innerHTML = `<b><u>Vehicle Load</u></b><br>Total Load :  ${(vehicleTotalKg/1000).toFixed(3)} Kgs<br>Vehicle :  <b>${vehicle}</b>`;
+ // ✅ ONE TIME CALL
+ calculateVehicle(vehicleTotalKg);
 };
+//Ek helper function banao
+function smartFormat(value, unit) {
+  if (unit !== 'gms') {
+    // ja pihle je likha tha us ke liye banaya giya "format(value, unit)"
+    return format(value, unit);
+  }
+
+  // value is in grams
+  const kg = value / 1000;
+  if (value < 1000) {
+    return kg.toFixed(3) + ' Kg';
+  } else {
+    return kg.toFixed(3) + ' Kg';
+  }
+}
+
+function calculateVehicle(vehicleTotalGrams) {
+  vehicleTotalGrams = Number(vehicleTotalGrams) || 0; // safety
+  const totalKg = vehicleTotalGrams / 1000;           // ✅ convert once
+
+  let vehicle = '';
+  let vehicleCount = 1;
+
+  if (totalKg <= 5000) {
+    vehicle = '2.5 Ton Vehicle';
+  }
+  else if (totalKg <= 9000) {
+    vehicle = 'Bolero Camper';
+  }
+  else if (totalKg <= 20000) {
+    vehicle = 'ALS (20 Ton)';
+  }
+  else {
+    vehicleCount = Math.ceil(totalKg / 20000);
+    vehicle = `ALS (20 Ton) x ${vehicleCount}`;
+  }
+
+  const vehicleArea = document.getElementById('vehicleArea');
+
+  vehicleArea.innerHTML = `
+    <b><u>Vehicle Load</u></b><br>
+    Total Load : ${totalKg.toFixed(3)} Kgs<br>
+    Vehicle : <b>${vehicle}</b>
+  `;
+}
 
 /************ FORMAT HELPERS ************/
 function format(val, unit){

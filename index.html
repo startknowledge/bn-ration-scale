@@ -15,49 +15,22 @@ Ye calculator strength (personnel count) aur selected ration scale ke base par a
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2162324894765763"
      crossorigin="anonymous"></script>
-
-     <!-- Open Graph / Social Share -->
-  <meta property="og:title" content="Battalion Ration Scale Calculator">
-  <meta property="og:description" content="Battalion Ration Scale Calculator ka use karke aap Officers (Offrs), JCO/ORs, aur Army Dogs ke liye alag-alag ration scale ke hisaab se khane-peene ki items (jaise Atta, Rice, Dal, Vegetables, Meat, Milk, etc.) ki total quantity nikal sakte ho.
-Ye calculator strength (personnel count) aur selected ration scale ke base par automatic calculation karta hai, jisse manual errors kam hote hain aur time save hota hai">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yourdomain.com/">
-  <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Calculator Library Portal">
-  <meta name="twitter:description" content="Explore 100+ online calculators including financial, health, scientific, tax, and more.">
-  <meta name="twitter:image" content="https://yourdomain.com/images/og-image.jpg">
-  <link rel="stylesheet" href="style.css">
- 
 </head>
 
 <body>
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About Me</a></li>
-    <li><a href="contact.html">Contact Us</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
-  </ul>
-</nav>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </nav>
   <!-- ===== HEADER ===== -->
-  <h1>RATION SCALE CALCULATOR</h1>
+  <h1>BATTALION RATION SCALE CALCULATOR</h1>
 
-  <!-- ===== TOP AD ===== -->
-  <div class="card ad-box">
-    <!-- top-bn-ration-scale -->
-    <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2162324894765763"
-     data-ad-slot="1966379200"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-    <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
+  <!-- ===== TOP AD ===== 
+  
 
   <!-- ===== CATEGORY ===== -->
   <div class="card">
@@ -73,8 +46,7 @@ Ye calculator strength (personnel count) aur selected ration scale ke base par a
     <select id="ration">
       <option value="fresh">Fresh Ration</option>
       <option value="dry">Dry Ration</option>
-    </select>
-    &nbsp;&nbsp;
+    </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <b>Days</b>
     <input type="number" id="days" value="1" min="1">
   </div>
@@ -82,12 +54,12 @@ Ye calculator strength (personnel count) aur selected ration scale ke base par a
   <!-- ===== STRENGTH ===== -->
   <div class="card" id="strengthBox">
     <b>Strength</b><br>
-    OFFRS <input type="number" id="sOff" value="0">
-    JCO <input type="number" id="sJco" value="0">
-    ORs <input type="number" id="sOr" value="0">
-    Dog <input type="number" id="sDog" value="0">
-    <br>
-    <b>Total:</b> <span id="sTotal">0</span>
+    OFFRS <input type="number" id="sOff" value="0">&nbsp;
+    JCO <input type="number" id="sJco" value="0">&nbsp;
+    ORs <input type="number" id="sOr" value="0">&nbsp;
+    Dog <input type="number" id="sDog" value="0">&nbsp;    
+    <b>Total Strength : </b><span id="sTotal">0</span>&nbsp;&nbsp;<b><span>,</span></b> &nbsp;&nbsp;
+    <b>"Total P " : </b> <span id="sTP">0</span>
   </div>
 
   <!-- ===== BUTTONS ===== -->
@@ -97,38 +69,16 @@ Ye calculator strength (personnel count) aur selected ration scale ke base par a
   </div>
 
   <!-- ===== RESULT TABLE ===== -->
-  <div class="card" id="tableArea"></div>
+  <div class="card" id="tableArea" style="display:none;"></div>
 
   <!-- ===== MIDDLE AD (BEST PLACE) ===== -->
-  <div class="card ad-box">
-    <!-- middle-bn-ration-scale -->
-    <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2162324894765763"
-     data-ad-slot="4441349363"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-    <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  </div>
+ 
 
   <!-- ===== VEHICLE RESULT ===== -->
-  <div class="card" id="vehicleArea"></div>
+  <div class="card" id="vehicleArea" style="display:none;"></div>
 
   <!-- ===== BOTTOM AD ===== -->
-  <div class="card ad-box">
-    <!-- bottom-bn-ration-scale -->
-    <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2162324894765763"
-     data-ad-slot="8024521099"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-    <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
+  
 
   <!-- Main JS -->
   <script src="script.js"></script>

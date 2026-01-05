@@ -77,11 +77,13 @@ button {
     padding: 6px 12px;
     margin-right: 6px;
 }
-table td:first-child, table th:first-child, 
-table td:nth-child(4), table th:nth-child(4),
-table td:nth-child(6), table th:nth-child(6),
-table td:nth-child(7), table th:nth-child(7) {
-    text-align: left;
+table td:nth-child(2){
+    text-align:left;
+}
+table td:nth-child(5),  
+table td:nth-child(7), 
+table td:nth-child(8) {
+    text-align:right;
 }
 
 /* ===== ADS BOX ===== */
