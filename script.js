@@ -62,7 +62,6 @@ const DATA = {
   {item:'K/Oil', unit:'ml', off:0.378, jco:0.253, dog:0.000}
  ]
 };
-
 /************ Ye arrow function hai, $ ek short name (helper function) banaya gaya hai, Matlab: $( "box" )
   document.getElementById( "box" )
   isko ab hum likh sakte hain as:
@@ -80,20 +79,35 @@ let currentRows=[];
 
 /************ STRENGTH LOGIC ************/
 function resetStrength(){
- sOff.value=0; sJco.value=0; sOr.value=0; sDog.value=0; sTotal.innerText=0; sTP.innerText=0;
+ sOff.value=''; sJco.value=''; sOr.value=''; sDog.value=''; sTotal.innerText=0; sTP.innerText=0;
 }
 
 function updateStrengthUI(){
  resetStrength();
  if(dog.checked){
   offrs.checked=false; jco.checked=false;
-  sDog.style.display='inline';
+  sDog.style.display='inline'; sDog.value=0;
   sOff.style.display='none'; sJco.style.display='none'; sOr.style.display='none';
  }else{
   sDog.style.display='none';
-  sOff.style.display=offrs.checked?'inline':'none';
-  sJco.style.display=jco.checked?'inline':'none';
-  sOr.style.display=jco.checked?'inline':'none';
+  //sOff.style.display=offrs.checked?'inline':'none';
+  //sJco.style.display=jco.checked?'inline':'none';
+  //sOr.style.display=jco.checked?'inline':'none';
+ if(offrs.checked){
+    sOff.style.display = 'inline';
+    sOff.value = 0;
+  } else {
+    sOff.style.display = 'none';
+  }
+  if(jco.checked){
+    sJco.style.display = 'inline';
+    sOr.style.display  = 'inline';
+    sJco.value = 0;
+    sOr.value  = 0;
+  } else {
+    sJco.style.display = 'none';
+    sOr.style.display  = 'none';
+  }
  }
 }
 
@@ -147,8 +161,17 @@ calcBtn.onclick = () => {
  rows.forEach((tr,i)=>{
   if(i===0) return;
   let tds = tr.querySelectorAll('td');
-  if(!tds[0].querySelector("input").checked) return;
+  //if(!tds[0].querySelector("input").checked) return;
+  if(!tds[0].querySelector("input").checked){
 
+  // ✅ Sirf TOTAL / GRAND TOTAL reset karo
+  tds.forEach((td, idx) => {
+    if (idx >= 4 && !td.querySelector('input')) {
+      td.innerHTML = '-';
+    }
+  });
+  return;
+}
   let item = tds[1].innerText;
   let unit = tds[2].innerText;
   let col = 3;
@@ -253,3 +276,4 @@ function eggTray(val){
  if(trays>0) txt += `<br><small>${trays} Tray${trays>1?'s':''}${rem?` + ${rem} Eggs`:''}</small>`;
  return txt;
 }
+updateStrengthUI();
