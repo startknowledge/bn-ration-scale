@@ -87,10 +87,13 @@ table td:nth-child(8) {
 }
 
 /* ===== ADS BOX ===== */
-.ad-box {
+/*.ad-box {
   text-align: center;
   min-height: 90px;
   padding: 10px;
+}*/
+#sOff, #sJco, #sOr, #sDog {
+  display: none;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -103,15 +106,8 @@ table td:nth-child(8) {
   select {
     width: 65px;
   }
-  #sOff,
-#sJco,
-#sOr,
-#sDog {
-  display: none;
-}
-
   table {
     font-size: 12px;
   }
-
 }
+
