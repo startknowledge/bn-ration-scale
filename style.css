@@ -103,8 +103,15 @@ table td:nth-child(8) {
   select {
     width: 65px;
   }
+  #sOff,
+#sJco,
+#sOr,
+#sDog {
+  display: none;
+}
 
   table {
     font-size: 12px;
   }
+
 }
