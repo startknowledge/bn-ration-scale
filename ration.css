@@ -1,0 +1,128 @@
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    font-family: Arial;
+    background: #5b8f66;
+    padding: 20px;
+}
+nav {
+  background: #5e9b5e;
+  padding: 12px 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: left;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+    text-align: center;
+    color: #cdd7ec;
+}
+h2 {
+    text-align: center;
+    color: #120601;
+}
+
+.card {
+    background: #dcd8a1;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #888;
+    padding: 6px;
+    text-align: center;
+}
+
+th {
+    background: #e7efff;
+}
+
+input[type=number], input[type=text] {
+    width: 70px;
+}
+
+small {
+    color: #555;
+}
+
+button {
+    padding: 6px 12px;
+    margin-right: 6px;
+}
+table td:nth-child(2){
+    text-align:left;
+}
+table td:nth-child(5),  
+table td:nth-child(7), 
+table td:nth-child(8) {
+    text-align:right;
+}
+tr.group th{
+  background:#97d3c4;
+  text-align:left;
+}
+
+/* ===== ADS BOX ===== */
+.ad-box {
+  text-align: center;
+  min-height: 90px;
+  padding: 10px;
+}
+#sOff, #sJco, #sOr, #sDog {
+  display: none;
+}
+#vegFreshTable{
+  background: #dcd8a1;
+  padding: 11px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+
+}
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .card {
+    padding: 12px;
+  }
+
+  input[type="number"],
+  select {
+    width: 65px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+}

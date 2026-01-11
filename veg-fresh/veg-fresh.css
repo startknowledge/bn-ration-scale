@@ -1,0 +1,103 @@
+/* uske niche veg-fresh specific css */
+body{
+  margin:0;    
+  font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;    
+  background:#b0dba2; 
+  font-weight:700;       
+}
+header{
+  padding:12px 16px;
+  background:#0f172a;
+  color:#fff;
+  padding:12px;
+  font-size:16px;
+}
+header h1{
+  margin:0;
+  text-align: center;
+}
+.container{
+  padding:12px;
+  max-width:1300px;
+  margin:auto;
+}
+.ads{
+  background:#eef2f7;
+  border:1px dashed #cbd5e1;
+  padding:15px;
+  text-align:center;
+  margin:12px 0;
+  color:#64748b;
+}
+.table-wrap{
+  overflow-x:auto;
+  background:#edbfbf;
+  border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+table{
+  border-collapse:collapse;
+  width:100%;
+  min-width:1300px;
+}
+thead th{
+  position:sticky;
+  top:0;
+  background:#a1eaa2;
+  z-index:1;
+  font-size:18px;
+}
+tr, th, td{
+  border:1px solid #0f49bc;
+  padding:2px;
+  text-align:center;
+  font-size:17px;
+}
+th.item, td.item{
+  text-align:left;
+  white-space:nowrap;
+  background:#b7e4a8;
+}
+tr.group th{
+  background:#97d3c4;
+  text-align:left;
+}
+input.month{
+  width:40px;
+  padding:3px;
+  text-align:center;
+  background:#c3e29c;
+}
+.current{
+  background:#f53030 !important;
+}
+footer{
+  text-align:center;
+  font-size:12px;
+  color:#64748b;
+  padding:12px;
+}
+/* ================= TOTAL COLUMN ================= */
+thead th:nth-last-child(2){
+  background:#ede2b5;
+  font-weight:700;
+}
+td.total{
+  background:#ede2b5;           
+  font-weight:700;
+  border-left:2px solid #94a3b8;
+}
+/* ================= AVG COLUMN ================= */
+thead th:last-child{
+  background:#ffedd5;
+}
+td:last-child{
+  background:#ffedd5;
+  font-weight:700;
+  border-left:2px solid #94a3b8;
+}
+
+@media (max-width:600px){
+  header h1{font-size:16px;}
+  input.month{width:30px;}
+}
