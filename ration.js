@@ -62,18 +62,7 @@ const DATA = {
   {item:'K/Oil', unit:'ml', off:0.378, jco:0.253, dog:0.000}
  ]
 };
-/************ Ye arrow function hai, $ ek short name (helper function) banaya gaya hai, Matlab: $( "box" )
-  document.getElementById( "box" )
-  isko ab hum likh sakte hain as:
-  $( "box" ) Dono ka 
-likhne ka same meaning hai: document.getElementById("box")
-✔️ Fayda: Code chhota ho jata hai, Bar-bar document.getElementById likhne ki zarurat nahi
-
-2️⃣ let currentRows = []; currentRows ek empty array hai, jisme hum data store karenge jo user ke selection ke hisab se load hoga
-  Jaise hi user "Load Table" button pe click karega, uske hisab se data currentRows me store ho jayega
-  Aur fir jab user "Calculate" button pe click karega, tab currentRows me jo data hoga, uske hisab se calculation hoga
-  ************ Ye comment hai,
-Isme baad me data / rows / items store kiye jayenge ************/
+/*Isme baad me data / rows / items store kiye jayenge */
 const $ = id => document.getElementById(id);
 let currentRows=[];
 
@@ -177,19 +166,6 @@ calcBtn.onclick = () => {
     // ✅ tds pehle define karo
     let tds = tr.querySelectorAll('td');
 
-
-    // ✅ checkbox check
-    /*if(!tds[0].querySelector("input").checked){
-
-      // sirf calculated cells reset
-      tds.forEach(td=>{
-        if(!td.querySelector('input')){
-          td.innerHTML = '-';
-        }
-      });
-
-      return;
-    }*/
     if(!tds[0].querySelector("input").checked){
       tds.forEach((td, index)=>{
         // skip checkbox, item, unit columns
@@ -246,7 +222,6 @@ calcBtn.onclick = () => {
 //Ek helper function banao
 function smartFormat(value, unit) {
   if (unit !== 'gms') {
-    // ja pihle je likha tha us ke liye banaya giya "format(value, unit)"
     return format(value, unit);
   }
 
@@ -254,14 +229,7 @@ function smartFormat(value, unit) {
   const kg = value / 1000;
   return kg.toFixed(3) + ' Kg';
 }
-  /*const kg = value / 1000;
-  if (value < 1000) {
-    return kg.toFixed(3) + ' Kg';
-  }else{
-    return kg.toFixed(3) + ' Kg';
-  }
-} */
-
+  
 function calculateVehicle(vehicleTotalGrams) {
   vehicleTotalGrams = Number(vehicleTotalGrams) || 0; // safety
   const totalKg = vehicleTotalGrams / 1000;           // ✅ convert once
@@ -299,7 +267,6 @@ function format(val, unit){
  if(unit==='ml' && val>=1000) return (val/1000).toFixed(3)+' Ltrs';
  return val.toFixed(3)+' '+unit;
 }
-
 function eggTray(val){
  let trays = Math.floor(val/30);
  let rem = val % 30;
@@ -307,7 +274,6 @@ function eggTray(val){
  if(trays>0) txt += `<br><small>${trays} Tray${trays>1?'s':''}${rem?` + ${rem} Eggs`:''}</small>`;
  return txt;
 }
-
 updateStrengthUI();
 
 /************ VEG FRESH KG FROM BN RATION ************/
@@ -330,11 +296,8 @@ function getVegFreshKg(){
       }
     }
   });
-
   return total * 1000; // grams
 }
-
-
 // expose ONLY what we need
 window.getVegFreshKg = getVegFreshKg;
 

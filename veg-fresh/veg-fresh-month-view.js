@@ -13,7 +13,6 @@ const labels = {
 };
 
 document.addEventListener("DOMContentLoaded", ()=>{
-
   const monthSelect = document.getElementById("monthSelect");
   const tablebody = document.querySelector("#vegFreshTable tbody");
 
@@ -35,32 +34,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
   function renderVegFresh(){
     const mKey = monthSelect.value;
     tablebody.innerHTML = "";
-    // Jaha par Strength "Offrs:1, JCOs:1, OR:2" to grand total :0.920 Kg
     const totalVegKg = window.getVegFreshKg ? window.getVegFreshKg() : 0;
     let sno = 1;
-    /* 🔥 AUTO LOOP ON GENUS 
-    for(const genusKey in VEG_GENUS){*/
+    /* 🔥 AUTO LOOP ON GENUS */
     for(const genusKey in VEG_FRESH_DATA){
         /* ===== GENUS HEADING AUTO ===== */
         tablebody.innerHTML += `
         <tr class="group">
             <th colspan="4" style="text-align: left; font-weight: 600;">${labels[genusKey] || genusKey}</th>
         </tr>`;
-    /*VEG_GENUS.genusA.forEach((r,i)=>{*/
     /* ===== GENUS ITEMS ===== */
         VEG_FRESH_DATA[genusKey].forEach((r)=>{
             const monthVal = r.months[mKey] || 0;  // Brinjal ki value 11 of Jan
-      /*const typeTotal = Object.values(r.months)
-        .reduce((a,b)=>a+(+b||0),0); // Total of Jan is 113
-
-      const itemKg = typeTotal
-        ? ((monthVal / typeTotal) * totalVegKg).toFixed(2)
-        : "0.00";*/
-
+      
             // percentage of BN veg fresh Kg
             const itemKgs = ((totalVegKg * monthVal)/100);
             const itemKg = (itemKgs / 1000).toFixed(3);
-            //const itemKg = ((totalVegKg * monthVal) / 100).toFixed(3);
             tablebody.innerHTML += `
             <tr>
                 <td>${sno++}</td>
@@ -76,7 +65,5 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     // initial render
     renderVegFresh();
-
-
     monthSelect.onchange = renderVegFresh;
 });

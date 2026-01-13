@@ -42,7 +42,6 @@ const VEG_FRESH_DATA = {
 };
 
 const monthsOrder = ["apr","may","jun","jul","aug","sep","oct","nov","dec","jan","feb","mar"];
-/*const monthNames = ["Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","Jan","Feb","Mar"];*/
 const ttbody = document.querySelector("#vegTable tbody");
 let sno = 1;
 
@@ -87,71 +86,6 @@ if(idx < 0) idx += 12;
 document.querySelectorAll("#vegTable tr").forEach(tr=>{
   if(tr.children[idx+2]) tr.children[idx+2].classList.add("current");
 });
-
-/*
-function render(month){
-  tbody.innerHTML = "";
-  let sno = 1;
-
-  for(const g in VEG_FRESH_DATA){
-    tbody.innerHTML += `
-      <tr class="group">
-        <th colspan="16">${labels[g]}</th>
-      </tr>`;
-
-    VEG_FRESH_DATA[g].forEach(r=>{
-      let total = Object.values(r.months).reduce((a,b)=>a+b,0);
-      let avg = (total/12).toFixed(1);
-
-      tbody.innerHTML += `
-        <tr>
-          <td>${sno++}</td>
-          <td class="item">${r.item}</td>
-          ${monthsOrder.map(m=>`<td>${r.months[m]}</td>`).join("")}
-          <td class="total">${total.toFixed(1)}</td>
-          <td class="avg">${avg}</td>
-        </tr>`;
-    });
-  }*/
-/*
-
-document.addEventListener("DOMContentLoaded", ()=>{
-  const tbody = document.querySelector("#vegFreshTable tbody");
-  if(!tbody) return;
-
-  let sno = 1;
-//OK
-  for(const genus in VEG_FRESH_DATA){
-    tbody.innerHTML += `
-      <tr class="group">
-        <th colspan="17">${labels[genus]}</th>
-      </tr>`;
-
-    VEG_FRESH_DATA[genus].forEach(row=>{
-      let html = `<tr>
-        <td>${sno++}</td>
-        <td class="item">${row.item}</td>`;
-
-      monthsOrder.forEach(m=>{
-        html += `<td><input class="month" value="${row.months[m]}"></td>`;
-      });
-
-      html += `<td class="total"></td><td class="avg"></td></tr>`;
-      tbody.innerHTML += html;
-    });
-  }
-//tak
-  calculate();
-});
-
-
-document.querySelectorAll("#vegFreshTable tbody tr").forEach(tr=>{
-  const cells = tr.querySelectorAll("td");
-  if(cells.length > 2 && cells[2 + idx]){
-  cells[2 + idx].classList.add("current");
-}
-  
-}); */
 
 // expose Genus A only (abhi)
 window.VEG_GENUS = VEG_FRESH_DATA;
