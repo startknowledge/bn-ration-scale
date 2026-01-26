@@ -5,7 +5,7 @@
 }
 body {
     font-family: Arial;
-    background: #5b8f66;
+    background: #7eb88b;
     padding: 20px;
 }
 nav {
@@ -38,6 +38,7 @@ h1 {
 h2 {
     text-align: center;
     color: #120601;
+    text-align: left;
 }
 .card {
     background: #dcd8a1;
@@ -97,6 +98,15 @@ tr.group th{
   margin-bottom: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,.1);
+}
+.site-footer{
+  text-align:center;
+  padding:20px;
+  background:#63ac72;
+  color:#fff;
+  margin-top:50px;
+}
+a{color:#0b63d6;text-decoration:none
 }
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
