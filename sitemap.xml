@@ -8,12 +8,17 @@
   </url>
   <url>
     <loc>https://bnrationscale.startknowledge.in/about.html</loc>
-    <lastmod>2026-01-25</lastmod>
+    <lastmod>2026-02-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bnrationscale.startknowledge.in/contact.html</loc>
     <lastmod>2026-01-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bnrationscale.startknowledge.in/how-to-use.html</loc>
+    <lastmod>2026-02-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -31,4 +36,14 @@
     <lastmod>2026-01-25</lastmod>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://bnrationscale.startknowledge.in/privacy.html</loc>
+    <lastmod>2026-01-25</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bnrationscale.startknowledge.in/veg-fresh/index.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <priority>0.7</priority>
+  </url>  
 </urlset>
